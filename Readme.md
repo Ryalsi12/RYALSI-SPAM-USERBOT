@@ -1,7 +1,7 @@
 # RYALSI SPAM USERBOT
 
 <p align="center">
-  <img src="https://telegra.ph/file/9daafeb39193a4a22ee5c.jpg">
+  <img src="https://telegra.ph/file/3f8c90d8da0020b34c84d.jpg">
 </p>
 
 ## 🚀 Deploy on Heroku 
