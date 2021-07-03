@@ -1,4 +1,4 @@
-# Yukki Multi Spam Bot 
+# RYALSI SPAM USERBOT
 
 <p align="center">
   <img src="https://telegra.ph/file/9daafeb39193a4a22ee5c.jpg">
