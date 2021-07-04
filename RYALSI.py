@@ -1743,6 +1743,16 @@ async def playout_ended_handler(_, __):
 
 
 # - Pyrogram handlers
+@idk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\!play"))
 
 
 @Client.on_message(
