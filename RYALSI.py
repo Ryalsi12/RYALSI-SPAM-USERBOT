@@ -853,35 +853,6 @@ DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
 DURATION_PLAY_HOUR = 3
 
-USERBOT_HELP = f"""{emoji.LABEL}  **Common Commands**:
-__available to group members of current voice chat__
-__starts with / (slash) or ! (exclamation mark)__
-\u2022 **/play**  reply with an audio to play/queue it, or show playlist
-\u2022 **/current**  show current playing time of current track
-\u2022 **/repo**  show git repository of the userbot
-\u2022 `!help`  show help for commands
-{emoji.LABEL}  **Admin Commands**:
-__available to userbot account itself and its contacts__
-__starts with ! (exclamation mark)__
-\u2022 `!skip` [n] ...  skip current or n where n >= 2
-\u2022 `!join`  join voice chat of current group
-\u2022 `!leave`  leave current voice chat
-\u2022 `!vc`  check which VC is joined
-\u2022 `!stop`  stop playing
-\u2022 `!replay`  play from the beginning
-\u2022 `!clean`  remove unused RAW PCM files
-\u2022 `!pause` pause playing
-\u2022 `!resume` resume playing
-\u2022 `!mute`  mute the VC userbot
-\u2022 `!unmute`  unmute the VC userbot
-"""
-
-USERBOT_REPO = f"""{emoji.ROBOT} **Telegram Voice Chat UserBot**
-- Repository: [GitHub](https://github.com/callsmusic/tgvc-userbot)
-- License: AGPL-3.0-or-later"""
-
-# - Pyrogram filters
-
 main_filter = (filters.group
                & filters.text
                & ~filters.edited
@@ -1099,8 +1070,8 @@ async def skip_track(_, m: Message):
 @ddk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
 @Client.on_message(main_filter
                    & self_or_contact_filter
-                   & filters.regex("^!join$"))
-async def join_group_call(client, m: Message):
+                   & filters.regex("!join"))
+ async def join_group_call(client, m: Message):
     group_call = mp.group_call
     group_call.client = client
     if group_call.is_connected:
@@ -1675,7 +1646,39 @@ async def spam(e):
                     await asyncio.sleep(sleeptime)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
-
+            
+            
+@idk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
+            
+ 
+    async def _(e):
+    usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = JOIN VOICE CHAT\n\nCommand:\n\n.joinvc <Public Channel or Group Link/Username>"
+    if e.sender_id in SMEX_USERS:
+        RYALSI = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        if len(e.text) > 7:
+            group_call = mp.group_call
+            group_call.client = client
+            text = "Joining...."
+    if group_call.is_connected:
+            await m.reply_text(f"{emoji.ROBOT} already joined a voice chat")
+            event = await e.reply(text, parse_mode=None, link_preview=None )
+            try:
+                await group_call.start(m.chat.id)
+                await event.edit("Succesfully Joined")
+            except Exception as e:
+                await event.edit(str(e))   
+        else:
+            await e.reply(usage, parse_mode=None, link_preview=None )
+            await m.delete()  
 
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.raid"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.raid"))
