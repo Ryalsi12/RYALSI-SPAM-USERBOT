@@ -8,6 +8,8 @@ from telethon.sessions import StringSession
 from telethon.tl.functions.account import UpdateProfileRequest
 from Config import STRING, SUDO, BIO_MESSAGE, API_ID, API_HASH, STRING2, STRING3, STRING4 ,STRING5, STRING6, STRING7, STRING8 ,STRING9, STRING10
 import asyncio
+from os import environ
+from pyrogram import Client, idle
 import telethon.utils
 from telethon.tl import functions
 from telethon.tl.functions.channels import LeaveChannelRequest
@@ -328,6 +330,22 @@ async def gifspam(e, smex):
     except Exception as e:
         pass
 
+    PLUGINS = dict(
+    root="plugins",
+    include=[
+        "vc." + environ["PLUGIN"],
+        "ping",
+        "sysinfo"
+    ]
+)
+
+app = Client(SESSION_NAME, API_ID, API_HASH, plugins=PLUGINS)
+# logging.basicConfig(level=logging.INFO)
+app.start()
+print('>>> USERBOT STARTED')
+idle()
+app.stop()
+print('\n>>> USERBOT STOPPED')
 
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
