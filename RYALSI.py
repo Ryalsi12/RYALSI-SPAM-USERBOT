@@ -418,40 +418,6 @@ async def get_sysinfo(client, m):
     response += await generate_sysinfo(client.workdir)
     await m_reply.edit_text(response)
     
-  DELETE_DELAY = 8
-DURATION_AUTOPLAY_MIN = 10
-DURATION_PLAY_HOUR = 3
-
-USERBOT_HELP = f"""{emoji.LABEL}  **Commands**:
-\u2022 **/play**  reply with an audio to play/queue it, or show playlist
-\u2022 **/current**  show current playing time of current track
-\u2022 **/repo**  show git repository of the userbot
-\u2022 `!help`  show help for commands
-\u2022 `!skip` `[n] ...`  skip current or n where n >= 2
-\u2022 `!join` `<channel> [join_as] [invite_hash]`  join group/channel VC
-\u2022 `!leave`  leave current voice chat
-\u2022 `!vc`  check which VC is joined
-\u2022 `!stop`  stop playing
-\u2022 `!replay`  play from the beginning
-\u2022 `!clean`  remove unused RAW PCM files
-\u2022 `!pause` pause playing
-\u2022 `!resume` resume playing
-\u2022 `!mute`  mute the VC userbot
-\u2022 `!unmute`  unmute the VC userbot
-"""
-
-USERBOT_REPO = f"""{emoji.ROBOT} **Telegram Voice Chat UserBot**
-- Repository: [GitHub](https://github.com/callsmusic/tgvc-userbot)
-- License: AGPL-3.0-or-later"""
-
-# - Pyrogram filters
-
-# self_or_contact_pm_filter = filters.create(
-#     lambda _, __, m:
-#     m.chat and m.chat.type == "private"
-#     and m.from_user and (m.from_user.is_contact or m.from_user.is_self)
-# )
-
 main_filter = (filters.chat("me")
                & filters.text
                & ~filters.edited
