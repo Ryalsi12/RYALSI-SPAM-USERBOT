@@ -1502,7 +1502,7 @@ async def spam(e):
 @ddk.on(events.NewMessage(incoming=True, pattern=r"\.joinvc"))
             
  
-    async def join_group_call(client, m: Message):
+    async def GroupCall(client, m: Message):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = JOIN VOICE CHAT\n\nCommand:\n\n.joinvc <Public Channel or Group Link/Username>"
     if e.sender_id in SMEX_USERS:
         RYALSI = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
