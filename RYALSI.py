@@ -343,12 +343,6 @@ async def gifspam(e, smex):
 )
 
     # logging.basicConfig(level=logging.INFO)
-app.start()
-print('>>> USERBOT STARTED')
-idle()
-app.stop()
-print('\n>>> USERBOT STOPPED')
-
 self_or_contact_filter = filters.create(
     lambda _, __, message:
     (message.from_user and message.from_user.is_contact) or message.outgoing
