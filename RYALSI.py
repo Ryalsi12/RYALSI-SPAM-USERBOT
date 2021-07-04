@@ -15,6 +15,13 @@ from typing import Union
 from os import environ
 from pyrogram import Client, idle
 import ffmpeg
+import asyncio
+import os
+import subprocess
+from datetime import datetime
+from pyrogram import Client, filters
+from pyrogram.types import Message
+from pytgcalls import GroupCall, GroupCallAction
 import signal
 from pyrogram import Client, filters
 from pytgcalls import GroupCall  # pip install pytgcalls
@@ -1374,39 +1381,7 @@ async def stop(_, message: Message):
     if process:
         process.send_signal(signal.SIGTERM)
         
-  """
-tgvc-userbot, Telegram Voice Chat Userbot
-Copyright (C) 2021  Dash Eclipse
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-Record Audio from Telegram Voice Chat
-Dependencies:
-- ffmpeg
-- opus-tools
-- bpm-tools
-Requirements (pip):
-- ffmpeg-python
-Start the userbot and send !record to a voice chat
-enabled group chat to start recording for 30 seconds
-"""
-import asyncio
-import os
-import subprocess
-from datetime import datetime
-
-# noinspection PyPackageRequirements
-import ffmpeg
-from pyrogram import Client, filters
-from pyrogram.types import Message
-from pytgcalls import GroupCall, GroupCallAction
+ 
 
 group_call = GroupCall(None, path_to_log_file='')
 
