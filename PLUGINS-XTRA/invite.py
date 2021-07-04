@@ -55,8 +55,16 @@ def user_full_name(user):
     return full_name
 
 
-@bot.on(admin_cmd(pattern="inviteall ?(.*)"))
-@bot.on(sudo_cmd(pattern="inviteall ?(.*)", allow_sudo=True))
+@idk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\inviteall"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\inviteall")) 
 async def get_users(event):
     sender = await event.get_sender()
     me = await event.client.get_me()
