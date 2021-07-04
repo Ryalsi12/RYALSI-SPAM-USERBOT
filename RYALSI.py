@@ -1087,7 +1087,16 @@ async def skip_track(_, m: Message):
                                        disable_web_page_preview=True)
         await _delay_delete_messages((reply, m), DELETE_DELAY)
 
-
+@idk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\!join"))
 @Client.on_message(main_filter
                    & self_or_contact_filter
                    & filters.regex("^!join$"))
