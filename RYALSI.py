@@ -851,7 +851,7 @@ text = """
 
 print(text)
 print("")
-print("SMEX! Yukki Multi Spam Bot Started Sucessfully.")
+print("YEP!!🥳RYALSI-SPAM-USERBOT STARTED SUCCESSFULLY🔥.")
 if len(sys.argv) not in (1, 3, 4):
     try:
         idk.disconnect()
