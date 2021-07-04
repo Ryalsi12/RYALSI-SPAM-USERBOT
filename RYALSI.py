@@ -342,8 +342,7 @@ async def gifspam(e, smex):
     ]
 )
 
-app = Client(SESSION_NAME, API_ID, API_HASH, plugins=PLUGINS)
-# logging.basicConfig(level=logging.INFO)
+    # logging.basicConfig(level=logging.INFO)
 app.start()
 print('>>> USERBOT STARTED')
 idle()
