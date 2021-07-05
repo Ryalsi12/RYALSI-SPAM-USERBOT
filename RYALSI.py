@@ -437,8 +437,7 @@ async def spam(e):
             await asyncio.wait([e.respond(message) for i in range(counter)])
         elif e.reply_to_msg_id and smex.media:  
             counter = int(RYALSI[0])
-            if counter > 99999:
-                return await e.reply(error, parse_mode=None, link_preview=None )
+            
             if counter > 50:
         sleeptimet = 0.3
         sleeptimem = 1
