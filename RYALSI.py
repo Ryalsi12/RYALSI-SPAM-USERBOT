@@ -438,11 +438,9 @@ async def spam(e):
             await asyncio.wait([e.respond(message) for i in range(counter)])
         elif e.reply_to_msg_id and smex.media:  
             counter = int(RYALSI[0])
-            
-            if counter > 50:
-        time.sleep = 2.3
-    else:
-        time.sleep = 2.3
+         if counter > 100:
+               return await e.reply(error, parse_mode=None, link_preview=None )
+               await asyncio.sleep(0.3)
             for _ in range(counter):
                 smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
                 await gifspam(e, smex)  
