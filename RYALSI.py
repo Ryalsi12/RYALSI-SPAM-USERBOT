@@ -1,6 +1,7 @@
 import os
 import sys
 import random
+import time
 from datetime import datetime
 from os import execl
 from telethon import TelegramClient, events
@@ -439,9 +440,9 @@ async def spam(e):
             counter = int(RYALSI[0])
             
             if counter > 50:
-        sleeptime = 0.3
+        time.sleep(2.4)
     else:
-        sleeptimet = 0.3
+        time.sleep(2.4)
             for _ in range(counter):
                 smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
                 await gifspam(e, smex)  
