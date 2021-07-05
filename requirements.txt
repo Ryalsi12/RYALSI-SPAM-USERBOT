@@ -2,7 +2,3 @@ Telethon
 python-dotenv
 asyncio
 TgCrypto
-ffmpeg-python
-psutil
-pytgcalls
-wheel
