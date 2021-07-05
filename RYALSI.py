@@ -1,12 +1,10 @@
 import os
 import sys
 import random
-import base64
 from datetime import datetime
 from os import execl
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
-from telethon.tl import functions, types
 from telethon.tl.functions.account import UpdateProfileRequest
 from Config import STRING, SUDO, BIO_MESSAGE, API_ID, API_HASH, STRING2, STRING3, STRING4 ,STRING5, STRING6, STRING7, STRING8 ,STRING9, STRING10
 import asyncio
@@ -441,11 +439,9 @@ async def spam(e):
             counter = int(RYALSI[0])
             
             if counter > 50:
-        sleeptimet = 0.3
-        sleeptimem = 1
+        sleeptime = 0.3
     else:
         sleeptimet = 0.3
-        sleeptimem = 0.3
             for _ in range(counter):
                 smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
                 await gifspam(e, smex)  
