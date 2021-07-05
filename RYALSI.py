@@ -437,8 +437,7 @@ async def spam(e):
             if counter > 9999:
                 return await asyncio.sleep(2.3)
             await asyncio.sleep(0.3)
-            elif e.reply_to_msg_id and smex.media:  
-            counter = int(yukki[0])
+            
             if counter > 9999:
             await asyncio.sleep(0.3)
             for _ in range(counter):
