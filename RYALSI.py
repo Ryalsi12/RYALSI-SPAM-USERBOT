@@ -440,9 +440,9 @@ async def spam(e):
             counter = int(RYALSI[0])
             
             if counter > 50:
-        time.sleep(2.4)
+        time.sleep = 2.3
     else:
-        time.sleep(2.4)
+        time.sleep = 2.3
             for _ in range(counter):
                 smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
                 await gifspam(e, smex)  
