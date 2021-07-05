@@ -433,19 +433,14 @@ async def spam(e):
         if len(RYALSI) == 2:
             message = str(RYALSI[1])
             counter = int(RYALSI[0])
-            if counter > 99999:
+            if counter < 99999:
                 return await e.reply(error, parse_mode=None, link_preview=None )
-            await asyncio.wait([e.respond(message) for i in range(counter)])
+                await asyncio.sleep(0.3)
         elif e.reply_to_msg_id and smex.media:  
             counter = int(RYALSI[0])
-         if counter < 99999:
-               return await e.reply(error, parse_mode=None, link_preview=None )
-               await asyncio.sleep(0.3)
-            for _ in range(counter):
-                async with e.client.action(e.chat_id, "typing"):
-                    await e.client.send_message(e.chat_id, message)
-                    await asyncio.sleep(0.3)
+         
         else:
+           
             await e.reply(usage, parse_mode=None, link_preview=None )
             
 
