@@ -425,22 +425,32 @@ async def _(e):
 @ddk.on(events.NewMessage(incoming=True, pattern=r"\.spam"))
 async def spam(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗦𝗽𝗮𝗺\n\nCommand:\n\n.spam <count> <message to spam>\n\n.spam <count> <reply to a message>\n\nCount must be a integer."
+    error = "Spam Module can only be used till 9999 count. For bigger spams use BigSpam."
     if e.sender_id in SMEX_USERS:
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None )
-        RYALSI = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         smex = await e.get_reply_message()
-        if len(RYALSI) == 2:
-            message = str(RYALSI[1])
-            counter = int(RYALSI[0])
-            if counter < 99999:
+        if len(yukki) == 2:
+            message = str(yukki[1])
+            counter = int(yukki[0])
+            if counter > 9999:
                 return await e.reply(error, parse_mode=None, link_preview=None )
-                await asyncio.sleep(0.3)
+            await asyncio.wait([e.respond(message) for i in range(counter)])
         elif e.reply_to_msg_id and smex.media:  
-            counter = int(RYALSI[0])
-         
+            counter = int(yukki[0])
+            if counter > 9999:
+                return await e.reply(error, parse_mode=None, link_preview=None )
+            for _ in range(counter):
+                smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
+                await gifspam(e, smex)  
+        elif e.reply_to_msg_id and smex.text:
+            message = smex.text
+            counter = int(yukki[0])
+            if counter > 9999:
+                return await e.reply(error, parse_mode=None, link_preview=None )
+            await asyncio.wait([e.respond(message) for i in range(counter)])
         else:
-           
             await e.reply(usage, parse_mode=None, link_preview=None )
             
 
