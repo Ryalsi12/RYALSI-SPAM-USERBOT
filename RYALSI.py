@@ -424,7 +424,6 @@ async def _(e):
 @ddk.on(events.NewMessage(incoming=True, pattern=r"\.spam"))
 async def spam(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗦𝗽𝗮𝗺\n\nCommand:\n\n.spam <count> <message to spam>\n\n.spam <count> <reply to a message>\n\nCount must be a integer."
-    error = "Spam Module can only be used till 99999 count. For bigger spams use BigSpam."
     if e.sender_id in SMEX_USERS:
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None )
@@ -440,6 +439,12 @@ async def spam(e):
             counter = int(RYALSI[0])
             if counter > 99999:
                 return await e.reply(error, parse_mode=None, link_preview=None )
+            if counter > 50:
+        sleeptimet = 0.3
+        sleeptimem = 1
+    else:
+        sleeptimet = 0.3
+        sleeptimem = 0.3
             for _ in range(counter):
                 smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
                 await gifspam(e, smex)  
