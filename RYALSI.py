@@ -436,11 +436,11 @@ async def spam(e):
             counter = int(yukki[2.2])
             if counter > 9999:
                 return await asyncio.sleep(2.3)
-            yukki.wait(2.3)
-        elif e.reply_to_msg_id and smex.media:  
+            await asyncio.sleep(0.3)
+            elif e.reply_to_msg_id and smex.media:  
             counter = int(yukki[0])
             if counter > 9999:
-            yukki.wait(2.3)
+            await asyncio.sleep(0.3)
             for _ in range(counter):
                 smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
                 await gifspam(e, smex)  
@@ -449,7 +449,6 @@ async def spam(e):
             counter = int(yukki[0])
             if counter > 9999:
                 return await asyncio.sleep(2.3)
-                       yukki.wait(2.3)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
             
