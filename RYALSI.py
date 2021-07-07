@@ -9,7 +9,10 @@ from telethon.tl.functions.account import UpdateProfileRequest
 from Config import STRING, SUDO, BIO_MESSAGE, API_ID, API_HASH, STRING2, STRING3, STRING4 ,STRING5, STRING6, STRING7, STRING8 ,STRING9, STRING10
 import asyncio
 import telethon.utils
+from telethon import events
+from telethon.errors.rpcerrorlist import (PhotoExtInvalidError, UsernameOccupiedError)
 from telethon.tl import functions
+from telethon.tl.functions.photos import DeletePhotosRequest, GetUserPhotosRequest, UploadProfilePhotoRequest
 from telethon.tl.functions.channels import LeaveChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from Utils import RAID, RRAID
