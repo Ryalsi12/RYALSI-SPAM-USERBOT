@@ -374,7 +374,7 @@ async def _(e):
     usage ="𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = Ppic\n\nCommand:\n\n.ppic <Message to set PPic of Userbot accounts>"
     if e.sender_id in SMEX_USERS:
         yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-        if event.fwd_from:
+        elif event.fwd_from:
     reply_message = await event.get_reply_message()
     await event.edit("Downloading Profile Picture to my local ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
