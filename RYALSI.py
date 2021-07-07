@@ -366,7 +366,7 @@ async def _(e):
 @edk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
 @ddk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))                   
             
-async _(e):
+async def _(e):
     usage ="𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = Ppic\n\nCommand:\n\n.ppic <Message to set PPic of Userbot accounts>"
     if e.sender_id in SMEX_USERS:
         yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
