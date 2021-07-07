@@ -1,7 +1,6 @@
 import os
 import sys
 import random
-import time
 from datetime import datetime
 from os import execl
 from telethon import TelegramClient, events
@@ -67,8 +66,8 @@ async def start_yukki():
             print("Booting Up The Client 1")
             await idk.start()
             botme = await idk.get_me()
-            await idk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
-            await idk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
+            await idk(functions.channels.JoinChannelRequest(channel="@OfficialYukki"))
+            await idk(functions.channels.JoinChannelRequest(channel="@OfficialYukkiSupport"))
             botid = telethon.utils.get_peer_id(botme)
             SMEX_USERS.append(botid)
         except Exception as e:
@@ -141,8 +140,8 @@ async def start_yukki():
         try:
             print("Booting Up The Client 4")
             await hdk.start()
-            await hdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
-            await hdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
+            await hdk(functions.channels.JoinChannelRequest(channel="@OfficialYukki"))
+            await hdk(functions.channels.JoinChannelRequest(channel="@OfficialYukkiSupport"))
             botme = await hdk.get_me()
             botid = telethon.utils.get_peer_id(botme)
             SMEX_USERS.append(botid)
@@ -166,8 +165,8 @@ async def start_yukki():
         try:
             print("Booting Up The Client 5")
             await sdk.start()
-            await sdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
-            await sdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
+            await sdk(functions.channels.JoinChannelRequest(channel="@OfficialYukki"))
+            await sdk(functions.channels.JoinChannelRequest(channel="@OfficialYukkiSupport"))
             botme = await sdk.get_me()
             botid = telethon.utils.get_peer_id(botme)
             SMEX_USERS.append(botid)
@@ -191,8 +190,8 @@ async def start_yukki():
         try:
             print("Booting Up The Client 6")
             await adk.start()
-            await adk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
-            await adk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
+            await adk(functions.channels.JoinChannelRequest(channel="@OfficialYukki"))
+            await adk(functions.channels.JoinChannelRequest(channel="@OfficialYukkiSupport"))
             botme = await adk.get_me()
             botid = telethon.utils.get_peer_id(botme)
             SMEX_USERS.append(botid)
@@ -216,8 +215,8 @@ async def start_yukki():
         try:
             print("Booting Up The Client 7")
             await bdk.start()
-            await bdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
-            await bdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
+            await bdk(functions.channels.JoinChannelRequest(channel="@OfficialYukki"))
+            await bdk(functions.channels.JoinChannelRequest(channel="@OfficialYukkiSupport"))
             botme = await bdk.get_me()
             botid = telethon.utils.get_peer_id(botme)
             SMEX_USERS.append(botid)
@@ -242,8 +241,8 @@ async def start_yukki():
         try:
             print("Booting Up The Client 8")
             await cdk.start()
-            await cdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
-            await cdk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
+            await cdk(functions.channels.JoinChannelRequest(channel="@OfficialYukki"))
+            await cdk(functions.channels.JoinChannelRequest(channel="@OfficialYukkiSupport"))
             botme = await cdk.get_me()
             botid = telethon.utils.get_peer_id(botme)
             SMEX_USERS.append(botid)
@@ -293,8 +292,8 @@ async def start_yukki():
         try:
             print("Booting Up The Client 10")
             await edk.start()
-            await edk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
-            await edk(functions.channels.JoinChannelRequest(channel="@TEAM_TITAN_OP"))
+            await edk(functions.channels.JoinChannelRequest(channel="@OfficialYukki"))
+            await edk(functions.channels.JoinChannelRequest(channel="@OfficialYukkiSupport"))
             botme = await edk.get_me()
             botid = telethon.utils.get_peer_id(botme)
             SMEX_USERS.append(botid)
@@ -329,7 +328,33 @@ async def gifspam(e, smex):
     except Exception as e:
         pass
 
- 
+
+@idk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\.bio"))        
+async def _(e):
+    usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗕𝗶𝗼\n\nCommand:\n\n.bio <Message to set Bio of Userbot accounts>"
+    if e.sender_id in SMEX_USERS:
+        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)     
+        if len(e.text) > 5:
+            bio = str(yukki[0])
+            text = "Changing Bio"
+            event = await e.reply(text, parse_mode=None, link_preview=None )
+            try:
+                await e.client(functions.account.UpdateProfileRequest(about=bio))
+                await event.edit("Succesfully Changed Bio")
+            except Exception as e:
+                await event.edit(str(e))   
+        else:
+            await e.reply(usage, parse_mode=None, link_preview=None )
+            
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
 @wdk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
@@ -343,9 +368,9 @@ async def gifspam(e, smex):
 async def _(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗝𝗼𝗶𝗻\n\nCommand:\n\n.join <Public Channel or Group Link/Username>"
     if e.sender_id in SMEX_USERS:
-        RYALSI = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         if len(e.text) > 6:
-            bc = RYALSI[0]
+            bc = yukki[0]
             text = "Joining..."
             event = await e.reply(text, parse_mode=None, link_preview=None )
             try:
@@ -369,9 +394,9 @@ async def _(e):
 async def _(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗝𝗼𝗶𝗻\n\nCommand:\n\n.pjoin <Private Channel or Group's access hash>\n\nExample :\nLink = https://t.me/joinchat/HGYs1wvsPUplMmM1\n\n.pjoin HGYs1wvsPUplMmM1"
     if e.sender_id in SMEX_USERS:
-        RYALSI = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         if len(e.text) > 7:
-            bc = RYALSI[0]
+            bc = yukki[0]
             text = "Joining...."
             event = await e.reply(text, parse_mode=None, link_preview=None )
             try:
@@ -396,9 +421,9 @@ async def _(e):
 async def _(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗟𝗲𝗮𝘃𝗲\n\nCommand:\n\n.leave <Channel or Chat ID>"
     if e.sender_id in SMEX_USERS:
-        RYALSI = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         if len(e.text) > 7:
-            bc = RYALSI[0]
+            bc = yukki[0]
             bc = int(bc)
             text = "Leaving....."
             event = await e.reply(text, parse_mode=None, link_preview=None )
@@ -409,7 +434,10 @@ async def _(e):
                 await event.edit(str(e))   
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
- 
+            
+                
+        
+        
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.spam"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.spam"))
 @wdk.on(events.NewMessage(incoming=True, pattern=r"\.spam"))
@@ -447,53 +475,6 @@ async def spam(e):
             if counter > 100:
                 return await e.reply(error, parse_mode=None, link_preview=None )
             await asyncio.wait([e.respond(message) for i in range(counter)])
-        else:
-            await e.reply(usage, parse_mode=None, link_preview=None )
-            
-                
-        
-        
-@idk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@ydk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@wdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@hdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@sdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@adk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@bdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@cdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@edk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-@ddk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
-async def spam(e):
-    usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗕𝗶𝗴𝗦𝗽𝗮𝗺\n\nCommand:\n\n.bigspam <count> <message to spam>\n\n.bigspam <count> <reply to a message>\n\nCount must be a integer."
-    if e.sender_id in SMEX_USERS:
-        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
-            return await e.reply(usage, parse_mode=None, link_preview=None )
-        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-        smex = await e.get_reply_message()
-        if len(yukki) == 2:
-            message = str(yukki[1])
-            counter = int(yukki[0])
-            for _ in range(counter):
-                async with e.client.action(e.chat_id, "typing"):
-                    if e.reply_to_msg_id:
-                        await smex.reply(message)
-                    else:
-                        await e.client.send_message(e.chat_id, message)
-                    await asyncio.sleep(0.3)
-        elif e.reply_to_msg_id and smex.media:  
-            counter = int(yukki[0])
-            for _ in range(counter):
-                async with e.client.action(e.chat_id, "document"):
-                    smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
-                    await gifspam(e, smex) 
-                await asyncio.sleep(0.3)  
-        elif e.reply_to_msg_id and smex.text:
-            message = smex.text
-            counter = int(yukki[0])
-            for _ in range(counter):
-                async with e.client.action(e.chat_id, "typing"):
-                    await e.client.send_message(e.chat_id, message)
-                    await asyncio.sleep(0.3)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
             
@@ -545,10 +526,52 @@ async def spam(e):
                     await asyncio.sleep(sleeptime)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
-            
-                        
- 
- 
+
+
+@idk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\.bigspam"))
+async def spam(e):
+    usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗕𝗶𝗴𝗦𝗽𝗮𝗺\n\nCommand:\n\n.bigspam <count> <message to spam>\n\n.bigspam <count> <reply to a message>\n\nCount must be a integer."
+    if e.sender_id in SMEX_USERS:
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+            return await e.reply(usage, parse_mode=None, link_preview=None )
+        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        smex = await e.get_reply_message()
+        if len(yukki) == 2:
+            message = str(yukki[1])
+            counter = int(yukki[0])
+            for _ in range(counter):
+                async with e.client.action(e.chat_id, "typing"):
+                    if e.reply_to_msg_id:
+                        await smex.reply(message)
+                    else:
+                        await e.client.send_message(e.chat_id, message)
+                    await asyncio.sleep(0.3)
+        elif e.reply_to_msg_id and smex.media:  
+            counter = int(yukki[0])
+            for _ in range(counter):
+                async with e.client.action(e.chat_id, "document"):
+                    smex = await e.client.send_file(e.chat_id, smex, caption=smex.text)
+                    await gifspam(e, smex) 
+                await asyncio.sleep(0.3)  
+        elif e.reply_to_msg_id and smex.text:
+            message = smex.text
+            counter = int(yukki[0])
+            for _ in range(counter):
+                async with e.client.action(e.chat_id, "typing"):
+                    await e.client.send_message(e.chat_id, message)
+                    await asyncio.sleep(0.3)
+        else:
+            await e.reply(usage, parse_mode=None, link_preview=None )
+
 
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.raid"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.raid"))
@@ -726,14 +749,16 @@ async def _(e):
 async def ping(e):
     if e.sender_id in SMEX_USERS:
         start = datetime.now()
-        text = "🔥⛓PONG⛓🔥"
+        text = "Pong!"
         event = await e.reply(text, parse_mode=None, link_preview=None )
         end = datetime.now()
         ms = (end-start).microseconds / 1000
-        await event.edit(f" 🔥⛓PONG⛓🔥\n`🚀{ms}` 𝗺𝘀 ☠️🏴‍☠️")
+        await event.edit(f"🤖 𝗣𝗼𝗻𝗴!\n`{ms}` 𝗺𝘀")
 
-#
 
+
+        
+        
 
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.restart"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.restart"))
@@ -792,20 +817,41 @@ async def restart(e):
         os.execl(sys.executable, sys.executable, *sys.argv)
         quit()
 
-       
+        
+        
+        
+        
+        
+@idk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\.help"))
+async def help(e):
+    if e.sender_id in SMEX_USERS:
+       text = "𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀\n\n𝙐𝙩𝙞𝙡𝙨 𝘾𝙤𝙢𝙢𝙖𝙣𝙙:\n.ping\n.restart\n\n𝙐𝙨𝙚𝙧𝙗𝙤𝙩 𝘾𝙤𝙢𝙢𝙖𝙣𝙙:\n.bio\n.join\n.pjoin\n.leave\n\n𝙎𝙥𝙖𝙢 𝘾𝙤𝙢𝙢𝙖𝙣𝙙:\n.spam\n.delayspam\n.bigspam\n.raid\n.replyraid\n.dreplyraid\n\n\nFor more help regarding usage of plugins type plugins name"
+       await e.reply(text, parse_mode=None, link_preview=None )
+
+        
+
     
         
 text = """
-╔══╦╦╦═╦╦╦══╦╦╦══╦═══╦╦══╗
-║╔╗║║║ ║║║╔╗║║║--║*╔═╝╩╣║╝
-║╚╝║║╚╝║║ ╚╝║║║--║-╚═╗ ║║
-║║╗╗╚╗*╔╝║--║║║--╚═╗*║ ║║
-║║*║║ ║║ ║╔╗║║╚═╗╔═╝-║╔║║╗
-╚╝═╚╝═╚╝═╚╝╚╩╩══╩╩══╩╩═══╝"""
+██╗░░░██╗██╗░░░██╗██╗░░██╗██╗░░██╗██╗
+╚██╗░██╔╝██║░░░██║██║░██╔╝██║░██╔╝██║
+░╚████╔╝░██║░░░██║█████═╝░█████═╝░██║
+░░╚██╔╝░░██║░░░██║██╔═██╗░██╔═██╗░██║
+░░░██║░░░╚██████╔╝██║░╚██╗██║░╚██╗██║
+░░░╚═╝░░░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝"""
 
 print(text)
 print("")
-print("STARTED SUCCESSFULLY🔥.")
+print("SMEX! Yukki Multi Spam Bot Started Sucessfully.")
 if len(sys.argv) not in (1, 3, 4):
     try:
         idk.disconnect()
