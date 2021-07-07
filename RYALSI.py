@@ -374,9 +374,7 @@ async def _(e):
     usage ="𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = Ppic\n\nCommand:\n\n.ppic <Message to set PPic of Userbot accounts>"
     if e.sender_id in SMEX_USERS:
         yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-        
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
-    photo = None
+      
     try:
         photo = await borg.download_media(  # pylint:disable=E0602
     except Exception as e:  # pylint:disable=C0103,W0703
