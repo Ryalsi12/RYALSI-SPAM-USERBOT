@@ -400,8 +400,7 @@ async def _(e):
     try:
         os.remove(photo)
     except Exception as e:  # pylint:disable=C0103,W0703
-        else:
-            await e.reply(usage, parse_mode=None, link_preview=None )
+        await e.reply(usage, parse_mode=None, link_preview=None )
             
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
