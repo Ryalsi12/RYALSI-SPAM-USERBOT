@@ -376,13 +376,9 @@ async def _(e):
         yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
     photo = None
     try:
         photo = await borg.download_media(  # pylint:disable=E0602
-            reply_message,
-            Config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
-        )
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
     else:
