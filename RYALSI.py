@@ -371,7 +371,6 @@ async def _(e):
     if e.sender_id in SMEX_USERS:
         yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         if event.fwd_from:
-        return
     reply_message = await event.get_reply_message()
     await event.edit("Downloading Profile Picture to my local ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
