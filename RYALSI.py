@@ -2,6 +2,7 @@ import os
 import sys
 import random
 from datetime import datetime
+from telethon.tl.types import InputPhoto, MessageMediaPhoto, User, Chat, Channel
 from os import execl
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
