@@ -355,6 +355,51 @@ async def _(e):
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
             
+@idk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@ydk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@wdk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@hdk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@sdk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@adk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@bdk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@cdk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@edk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))
+@ddk.on(events.NewMessage(incoming=True, pattern=r"\.ppic"))                   
+            
+async _(e):
+    usage ="𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = Ppic\n\nCommand:\n\n.ppic <Message to set PPic of Userbot accounts>"
+    if e.sender_id in SMEX_USERS:
+        yukki = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        if event.fwd_from:
+        return
+    reply_message = await event.get_reply_message()
+    await event.edit("Downloading Profile Picture to my local ...")
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
+        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
+    photo = None
+    try:
+        photo = await borg.download_media(  # pylint:disable=E0602
+            reply_message,
+            Config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
+        )
+    except Exception as e:  # pylint:disable=C0103,W0703
+        await event.edit(str(e))
+    else:
+        if photo:
+            await event.edit("now, Uploading to @Telegram ...")
+            file = await borg.upload_file(photo)  # pylint:disable=E0602
+            try:
+                await borg(functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
+                    file
+                ))
+            except Exception as e:  # pylint:disable=C0103,W0703
+                await event.edit(str(e))
+            else:
+                await event.edit("My profile picture was succesfully changed")
+    try:
+        os.remove(photo)
+    except Exception as e:  # pylint:disable=C0103,W0703
+            
 @idk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
 @ydk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
 @wdk.on(events.NewMessage(incoming=True, pattern=r"\.join"))
